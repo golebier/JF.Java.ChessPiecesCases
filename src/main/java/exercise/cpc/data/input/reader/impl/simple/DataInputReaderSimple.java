@@ -15,6 +15,6 @@ import exercise.cpc.data.input.reader.DataInputReader;
  *      https://google.com/+RadoslawGolebiewski
  *      http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
 */
-public class DataInputPiece implements DataInputReader {
+public class DataInputReaderSimple implements DataInputReader {
 
 }

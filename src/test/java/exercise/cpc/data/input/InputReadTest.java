@@ -11,6 +11,7 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 
 import exercise.cpc.data.input.reader.DataInputReader;
+import exercise.cpc.data.input.reader.impl.simple.DataInputReaderSimple;
 /**
  *  TOOD correct doc.
  *  Basic test for reading input data.  
@@ -40,6 +41,6 @@ public class InputReadTest {
 
     @Test
     public void shouldAssertInputDataCorrectnesTest() throws IOException {
-        
+        DataInputReader dataInputReader = new DataInputReaderSimple();
     }
 }
