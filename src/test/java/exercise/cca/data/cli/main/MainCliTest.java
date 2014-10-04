@@ -1,4 +1,5 @@
 package exercise.cca.data.cli.main;
+
 //
 //Copyright (c) 1979, the Gra projects.
 //Please see the AUTHORS file for details.
@@ -9,6 +10,7 @@ package exercise.cca.data.cli.main;
 import java.io.IOException;
 
 import org.testng.annotations.Test;
+
 /**
  *  Core test for main file, runs all needed in test env.
  *  Now just basic to began.
