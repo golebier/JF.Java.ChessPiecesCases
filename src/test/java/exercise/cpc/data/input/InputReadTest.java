@@ -39,6 +39,7 @@ public class InputReadTest {
     private DataInput inputdata = null;
     private DataInputReader dataInputReader = null;
 
+    // TODO mocked?
     @Test
     public void shouldAssertInputDataCorrectnesTest() throws IOException {
         DataInputReader dataInputReader = new DataInputReaderSimple();

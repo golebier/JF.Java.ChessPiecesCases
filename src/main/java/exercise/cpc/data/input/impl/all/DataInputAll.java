@@ -1,5 +1,4 @@
 package exercise.cpc.data.input.impl.all;
-
 //
 //Copyright (c) 1979, the Gra projects.
 //Please see the AUTHORS file for details.
