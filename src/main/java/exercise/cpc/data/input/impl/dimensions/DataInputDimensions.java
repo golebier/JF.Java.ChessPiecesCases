@@ -32,6 +32,8 @@ public class DataInputDimensions implements InputData {
         this.m = m;
     }
     
+    // TODO validate the dimensions, as public method, and use it in setters and constructor.
+    
     public Integer getN() {
         return n;
     }
