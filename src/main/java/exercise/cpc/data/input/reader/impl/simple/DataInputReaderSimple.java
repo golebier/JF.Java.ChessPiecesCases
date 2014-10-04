@@ -29,16 +29,26 @@ public class DataInputReaderSimple implements DataInputReader<DataInput> {
     private DataInputReaderDimensions dimensionsResder = null;
     private DataInputReaderPieces piecesReader = null;
     
+    public DataInputReaderSimple(DataInputReaderDimensions dataInputReaderDimensions,
+            DataInputReaderPieces dataInputReaderPieces) {
+        dimensionsResder = dataInputReaderDimensions;
+        piecesReader = dataInputReaderPieces;
+    }
+    
     // TODO use a lib
     @Override
     public DataInput read(String[] parameters) {
         DataInputDimensions dimensions = dimensionsResder.read(parameters);
         List<DataInputPiece> pieces = piecesReader.readAll(parameters);
-        
-        // TODO is there more to do?
-        return new DataInputAll(dimensions, pieces);
+        if (null != dimensions && null != pieces) {
+            return new DataInputAll(dimensions, pieces);
+        }
+        return null;
     }
     
+    /**
+     * Is not used in this implementation.
+     */
     @Override
     public List<DataInput> readAll(String[] parameters) {
         return null;
