@@ -55,45 +55,46 @@ public class DataInputReaderPiecesTest {
             "Knight", "1"
     };
     
-    private DataInputReaderPieces dataInputReaderPieces;
+    private DataInputReaderPieces dataInputReaderPieces = new DataInputReaderPieces();
     
+    // TODO add -P not first parameter
     @Test
     public void shouldAssertCorrectnessOfPiecesListTest() {
-        dataInputReaderPieces = new DataInputReaderPieces();
         assertNotNull(dataInputReaderPieces.readAll(CORRECT_INPUT_DATA));
     }
     
     @Test
     public void shouldAssertIncorrectnessOfPiecesListTest() {
-        dataInputReaderPieces = new DataInputReaderPieces();
         assertNull(dataInputReaderPieces.readAll(INCORRECT_INPUT_DATA_WITHOUT_A_PIECE));
     }
     
     @Test
     public void shouldAssertIncorrectnessOfPiecesListWhenWithoutAmountTest() {
-        dataInputReaderPieces = new DataInputReaderPieces();
         assertNull(dataInputReaderPieces.readAll(INCORRECT_INPUT_DATA_WITHOUT_A_ANOUNT));
     }
     
     @Test
     public void shouldAssertIncorrectnessOfPiecesListWhenWrongOrderTest() {
-        dataInputReaderPieces = new DataInputReaderPieces();
         assertNull(dataInputReaderPieces.readAll(INCORRECT_INPUT_DATA_WRONG_ORDER));
     }
     
     @Test
     public void shouldAssertCorrectnessOfPiecesListSizeTest() {
-        dataInputReaderPieces = new DataInputReaderPieces();
         assertEquals(dataInputReaderPieces.readAll(CORRECT_INPUT_DATA).size(), CORRECT_SIZE_OF_PIECES_LIST);
     }
     
     @Test
     public void shouldAssertCorrectnessOfEachPieceTest() {
-        dataInputReaderPieces = new DataInputReaderPieces();
         List<DataInputPiece> piecesList = dataInputReaderPieces.readAll(CORRECT_INPUT_DATA_WITH_A_PIECE);
         assertTrue(piecesList.iterator().hasNext());
         DataInputPiece piece = piecesList.iterator().next();
         assertEquals(piece.getAmount(), new Integer(1));
         assertEquals(piece.getName(), EXPECTED_PIECES_NAME);
+    }
+    
+    @Test
+    public void shouldAssertIncorrectnessOfDataInputTest() {
+        // this method is not used in this implementation
+        assertNull(dataInputReaderPieces.read(CORRECT_INPUT_DATA));
     }
 }

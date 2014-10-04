@@ -32,8 +32,8 @@ public class DataInputReaderPieces implements DataInputReader<DataInputPiece> {
             if (!PARAMETER_PATTERN.equals(parameters[index])) {
                 continue;
             }
-            String name = prepareName(parameters, index);
-            Integer amount = prepareAmount(parameters, index);
+            String name = prepareName(parameters, index + 1);
+            Integer amount = prepareAmount(parameters, index + 2);
             if (null != name && null != amount) {
                 piecesList.add(new DataInputPiece(name, amount));
             }
@@ -46,18 +46,18 @@ public class DataInputReaderPieces implements DataInputReader<DataInputPiece> {
     }
     
     private String prepareName(String[] parameters, int index) {
-        if (index + 1 >= parameters.length) {
+        if (index >= parameters.length) {
             return null;
         }
-        return parameters[index + 1];
+        return parameters[index];
     }
     
     private Integer prepareAmount(String[] parameters, int index) {
-        if (index + 2 >= parameters.length) {
+        if (index >= parameters.length) {
             return null;
         }
         try {
-            return Integer.parseInt(parameters[index + 2]);
+            return Integer.parseInt(parameters[index]);
         } catch (NumberFormatException e) {
             // TODO add logger
         }
