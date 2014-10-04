@@ -6,7 +6,7 @@ package exercise.cpc.data.input.impl.piece;
 //Use of this source code is governed by a MIT-style license
 //that can be found in the LICENSE file.
 //
-import exercise.cpc.data.input.InputData;
+import exercise.cpc.data.input.DataInput;
 /**
  *  Piece of the chess pieces. Implementation of  the {@code DataInput}.
  *  TODO write more.
@@ -16,7 +16,7 @@ import exercise.cpc.data.input.InputData;
  *      https://google.com/+RadoslawGolebiewski
  *      http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
 */
-public class DataInputPiece implements InputData {
+public class DataInputPiece implements DataInput {
     private String name;
     private Integer amount;
 

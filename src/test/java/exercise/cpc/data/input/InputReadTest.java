@@ -9,6 +9,8 @@ package exercise.cpc.data.input;
 import java.io.IOException;
 
 import org.testng.annotations.Test;
+
+import exercise.cpc.data.input.reader.DataInputReader;
 /**
  *  TOOD correct doc.
  *  Basic test for reading input data.  
@@ -32,7 +34,9 @@ public class InputReadTest {
         , "-P", "Rook", "1"
         , "-P", "Knight", "1"
     };
-    private InputData inputdata = null;
+
+    private DataInput inputdata = null;
+    private DataInputReader dataInputReader = null;
 
     @Test
     public void shouldAssertInputDataCorrectnesTest() throws IOException {

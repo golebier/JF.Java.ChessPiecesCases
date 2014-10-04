@@ -10,7 +10,7 @@ package exercise.cpc.data.input.impl.all;
 import java.util.ArrayList;
 import java.util.List;
 
-import exercise.cpc.data.input.InputData;
+import exercise.cpc.data.input.DataInput;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.input.impl.piece.DataInputPiece;
 
@@ -24,7 +24,7 @@ import exercise.cpc.data.input.impl.piece.DataInputPiece;
  *         https://google.com/+RadoslawGolebiewski
  *         http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
  */
-public class DataInputAll implements InputData {
+public class DataInputAll implements DataInput {
     private DataInputDimensions dataInputDimensions;
     private List<DataInputPiece> piecesList = new ArrayList<DataInputPiece>();
     

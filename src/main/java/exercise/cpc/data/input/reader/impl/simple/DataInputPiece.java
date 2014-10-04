@@ -1,4 +1,4 @@
-package exercise.cpc.data.input;
+package exercise.cpc.data.input.reader.impl.simple;
 //
 //Copyright (c) 1979, the Gra projects.
 //Please see the AUTHORS file for details.
@@ -6,8 +6,8 @@ package exercise.cpc.data.input;
 //Use of this source code is governed by a MIT-style license
 //that can be found in the LICENSE file.
 //
+import exercise.cpc.data.input.reader.DataInputReader;
 /**
- *  Basic interface for all of the input data.
  *  TODO write more.
  *
  * @author Gra <Gołębiewski Radosław A.>
@@ -15,6 +15,6 @@ package exercise.cpc.data.input;
  *      https://google.com/+RadoslawGolebiewski
  *      http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
 */
-public interface InputData {
-    
+public class DataInputPiece implements DataInputReader {
+
 }
