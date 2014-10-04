@@ -32,8 +32,10 @@ public class InputReadTest {
         , "-P", "Rook", "1"
         , "-P", "Knight", "1"
     };
+    private InputData inputdata = null;
 
     @Test
-    public void shouldRunFullTest() throws IOException {
+    public void shouldAssertInputDataCorrectnesTest() throws IOException {
+        
     }
 }
