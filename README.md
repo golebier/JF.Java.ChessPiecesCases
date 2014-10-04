@@ -1,4 +1,5 @@
 JF.Java.ChessPiecesCases
 ========================
 
-TODO write nice intro ;)
+TODO Write nice description, from orgynal.
+
