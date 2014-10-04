@@ -1,6 +1,10 @@
 JF.Java.ChessPiecesCases
 ========================
 
+WORK IN PROGRESS ;) please be patient.
+
+
+
 Original:
 
 
