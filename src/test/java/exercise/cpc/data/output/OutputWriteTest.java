@@ -1,4 +1,4 @@
-package exercise.cpc.data.input;
+package exercise.cpc.data.output;
 //
 //Copyright (c) 1979, the Gra projects.
 //Please see the AUTHORS file for details.
@@ -11,28 +11,16 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 /**
  *  TOOD correct doc.
- *  Basic test for reading input data.  
+ *  Basic test for writing output data.  
  *  Should test:
- *   the board dimensions reading and saving for later
- *   each type pieces with amount
+ *   all pieces of counted output
  *
  * @author Gra <Gołębiewski Radosław A.>
  *      https://github.com/golebier or https://golebier.github.io
  *      https://google.com/+RadoslawGolebiewski
  *      http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
 */
-public class InputReadTest {
-    // as far as simple: input data would be given via args[], then input data spec is:
-
-    private static final String[] CORRECT_INPUT_DATA = {
-        "-D", "7", "7"
-        , "-P", "King", "1"
-        , "-P", "Queen", "1"
-        , "-P", "Bishop", "1"
-        , "-P", "Rook", "1"
-        , "-P", "Knight", "1"
-    };
-
+public class OutputWriteTest {
     @Test
     public void shouldRunFullTest() throws IOException {
     }
