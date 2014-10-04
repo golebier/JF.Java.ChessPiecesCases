@@ -42,5 +42,7 @@ public class InputReadTest {
     @Test
     public void shouldAssertInputDataCorrectnesTest() throws IOException {
         DataInputReader dataInputReader = new DataInputReaderSimple();
+        // TODO
+        inputdata = dataInputReader.read(CORRECT_INPUT_DATA);
     }
 }
