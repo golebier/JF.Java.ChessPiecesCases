@@ -15,10 +15,10 @@ import exercise.cpc.data.input.reader.DataInputReader;
 /**
  * TODO write more.
  *
- * @author Gra <Gołębiewski Radosław A.> https://github.com/golebier or
- *         https://golebier.github.io https://google.com/+RadoslawGolebiewski
- *         http
- *         ://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
+ * @author Gra <Gołębiewski Radosław A.>
+ *         https://github.com/golebier or https://golebier.github.io
+ *         https://google.com/+RadoslawGolebiewski
+ *         http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
  */
 public class DataInputReaderDimensions implements DataInputReader<DataInputDimensions> {
     // TODO use a lib
