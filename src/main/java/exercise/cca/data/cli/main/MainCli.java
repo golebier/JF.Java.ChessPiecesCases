@@ -1,4 +1,5 @@
 package exercise.cca.data.cli.main;
+
 //
 //Copyright (c) 1979, the Gra projects.
 //Please see the AUTHORS file for details.
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.core.io.ClassPathResource;
+
 /**
  *  Core main file, runs all needed.
  *  Now just basic to began.
@@ -26,27 +28,27 @@ import org.springframework.core.io.ClassPathResource;
 public class MainCli {
     private static final int OK_EXIT_STATUS = 0;
     private static final String CONTEXT_PATH = "main-context.xml";
-
+    
     public static void main(String[] args) throws IOException {
         final ConfigurableApplicationContext applicationContext = loadContext(CONTEXT_PATH);
-
-        if (null !=  applicationContext) {
-        	// TODO add more
+        
+        if (null != applicationContext) {
+            // TODO add more
         }
-
+        
         new MainCli().run();
     }
-
+    
     public void run() throws IOException {
-
+        // TODO just adding final solution, make this correct when all done.
+        // DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(), new DataInputReaderPieces());
+        // dataInputReaderSimple.read(args)
         System.exit(OK_EXIT_STATUS);
     }
-
-    protected static ConfigurableApplicationContext loadContext(
-            final String contextPath) {
+    
+    protected static ConfigurableApplicationContext loadContext(final String contextPath) {
         final GenericApplicationContext ctx = new GenericApplicationContext();
-        final XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(
-                ctx);
+        final XmlBeanDefinitionReader xmlReader = new XmlBeanDefinitionReader(ctx);
         xmlReader.loadBeanDefinitions(new ClassPathResource(contextPath));
         final PropertyPlaceholderConfigurer placeholderProcessor = new PropertyPlaceholderConfigurer();
         ctx.addBeanFactoryPostProcessor(placeholderProcessor);
