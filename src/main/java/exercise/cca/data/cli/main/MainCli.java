@@ -40,7 +40,7 @@ public class MainCli {
     }
     
     public void run() throws IOException {
-        // TODO just adding final solution, make this correct when all done.
+        // TODO just adding final solutions, make this correct when all done.
         // DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(), new DataInputReaderPieces());
         // dataInputReaderSimple.read(args)
         System.exit(OK_EXIT_STATUS);
