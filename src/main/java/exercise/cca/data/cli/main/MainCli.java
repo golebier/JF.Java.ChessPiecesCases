@@ -53,6 +53,10 @@ public class MainCli {
                     // if there is no same pieces in list then there is no problem,
                     //   but there are/will be, should remember are this piece in different sequence
                     //   was placed here? or remove clones
+                     * 
+                     * yep not always is possible to add board,
+                     * but where costs are bigger?
+                     *  move pieces on board or destroy wrong attempted and start from scratch?
                     if (prepareBeard(x, y, board)) {
                         boards.add(board);
                     }

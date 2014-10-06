@@ -24,6 +24,7 @@ import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
  *         http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
  */
 public class ChessBoard {
+    // TODO for tests add what pieces cross in what places
     private List<Position> freePositions = new ArrayList<Position>();
     private DataInputDimensions dimensions;
     
