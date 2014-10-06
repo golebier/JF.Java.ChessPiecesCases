@@ -48,13 +48,26 @@ public class MainCli {
             List<Board> boards = new ArrayList<Board>();
             for (int y = 0; y < boardYSize(); ++x) {
                 for (int x = 0; x < boardXSize(); ++x) {
-                    prepareBeard();
+                    Board board = new Board();
+                    if (prepareBeard(x, y, board)) {
+                        boards.add(board);
+                    }
+                    // TODO is more needed here?
                 }
             }
             printBoards(boards);
         */
         System.exit(OK_EXIT_STATUS);
     }
+    
+    /* TODO pseudo code now, just to see how to do this ;)
+    void prepareBeard(int xToStart, int yToStart, Board board) {
+        // sortedListOfPiecesToPlaceOnBoard more invasive on front, then less moves are needed
+        for (Piece piece : sortedListOfPiecesToPlaceOnBoard) {
+            board.placePieceInPlaceWhereHasNotGotCollisions(piece);
+        }
+    }
+     */
     
     protected static ConfigurableApplicationContext loadContext(final String contextPath) {
         final GenericApplicationContext ctx = new GenericApplicationContext();
