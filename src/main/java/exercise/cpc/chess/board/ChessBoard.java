@@ -40,7 +40,31 @@ public class ChessBoard {
         }
     }
     
-    public void placePieceInPlaceWhereHasNotGotCollisions(ChessPiece piece) {
+    /**
+     * Only if could place piece on the board will return true.
+     * Then if false this board is not useful.
+     * 
+     * @param piece
+     * @return false if couldn't place given piece on the board
+     *   true if could.
+     */
+    public boolean placePieceInPlaceWhereHasNotGotCollisions(ChessPiece piece) {
         // TODO test is this good path
+        if (isValid(piece.getX(), piece.getY())) {
+            return false;
+        }
+        List<Position> newFreePositions = piece.checkCollisions(freePositions);
+        if (null == newFreePositions) {
+            return false;
+        }
+        freePositions = newFreePositions;
+        return true;
+    }
+    
+    private boolean isValid(int x, int y) {
+        if (x < 0 || x > dimensions.getN() || y < 0 || y > dimensions.getM()) {
+            return false;
+        }
+        return true;
     }
 }

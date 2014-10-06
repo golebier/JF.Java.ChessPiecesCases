@@ -7,6 +7,8 @@ package exercise.cpc.chess.pieces.piece.impl.base;
 //Use of this source code is governed by a MIT-style license
 //that can be found in the LICENSE file.
 //
+import java.util.List;
+
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.position.Position;
 
@@ -21,9 +23,27 @@ import exercise.cpc.chess.pieces.piece.position.Position;
 public class ChessPieceBase implements ChessPiece {
     protected Position xy;
     
+    public ChessPieceBase(int x, int y) {
+        xy = new Position(x, y);
+    }
+    
+    public ChessPieceBase(Position xy) {
+        this.xy = xy;
+    }
+    
     @Override
-    public boolean canCollidate() {
+    public List<Position> checkCollisions(List<Position> freePositions) {
         // TODO Auto-generated method stub
-        return false;
+        return null;
+    }
+    
+    @Override
+    public int getX() {
+        return xy.getX();
+    }
+    
+    @Override
+    public int getY() {
+        return xy.getY();
     }
 }

@@ -69,13 +69,16 @@ public class MainCli {
     }
     
     /* TODO pseudo code now, just to see how to do this ;)
-    void prepareBeard(int xToStart, int yToStart, Board board) {
+    boolean prepareBeard(int xToStart, int yToStart, Board board) {
         // sortedListOfPiecesToPlaceOnBoard more invasive on front, then less moves are needed
         for (Piece piece : sortedListOfPiecesToPlaceOnBoard) {
             // this method fill the list of free positions to use if new piece has not got collisions
             // and place the piece on board
-            board.placePieceInPlaceWhereHasNotGotCollisions(piece);
+            if (!board.placePieceInPlaceWhereHasNotGotCollisions(piece)) {
+                return false;
+            }
         }
+        return true;
     }
      */
     

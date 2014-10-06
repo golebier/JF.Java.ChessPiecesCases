@@ -1,5 +1,9 @@
 package exercise.cpc.chess.pieces.piece;
 
+import java.util.List;
+
+import exercise.cpc.chess.pieces.piece.position.Position;
+
 //
 //Copyright (c) 1979, the Gra projects.
 //Please see the AUTHORS file for details.
@@ -18,6 +22,9 @@ package exercise.cpc.chess.pieces.piece;
  */
 public interface ChessPiece {
     // TODO
-    boolean canCollidate();
+    List<Position> checkCollisions(List<Position> freePositions);
     
+    int getX();
+    
+    int getY();
 }

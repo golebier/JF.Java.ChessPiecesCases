@@ -7,8 +7,11 @@ package exercise.cpc.chess.pieces.piece.impl.king;
 //Use of this source code is governed by a MIT-style license
 //that can be found in the LICENSE file.
 //
+import java.util.List;
+
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.base.ChessPieceBase;
+import exercise.cpc.chess.pieces.piece.position.Position;
 
 /**
  *  TODO write more.
@@ -20,10 +23,17 @@ import exercise.cpc.chess.pieces.piece.impl.base.ChessPieceBase;
  */
 public class ChessKing extends ChessPieceBase implements ChessPiece {
     
-    @Override
-    public boolean canCollidate() {
-        // TODO Auto-generated method stub
-        return false;
+    public ChessKing(int x, int y) {
+        super(x, y);
     }
     
+    public ChessKing(Position xy) {
+        super(xy);
+    }
+    
+    @Override
+    public List<Position> checkCollisions(List<Position> freePositions) {
+        
+        return null;
+    }
 }
