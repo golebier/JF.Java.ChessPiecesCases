@@ -46,7 +46,7 @@ public class MainCli {
         
         /* TODO first algorithm:
             List<Board> boards = new ArrayList<Board>();
-            for (int y = 0; y < boardYSize(); ++x) {
+            for (int y = 0; y < boardYSize(); ++y) {
                 for (int x = 0; x < boardXSize(); ++x) {
                     Board board = new Board();
                     // for each position on board try to generate new pieces places to stay/place
