@@ -44,11 +44,15 @@ public class MainCli {
         // DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(), new DataInputReaderPieces());
         // dataInputReaderSimple.read(args)
         
-        /** TODO first algorithm:
+        /* TODO first algorithm:
             List<Board> boards = new ArrayList<Board>();
             for (int y = 0; y < boardYSize(); ++x) {
                 for (int x = 0; x < boardXSize(); ++x) {
                     Board board = new Board();
+                    // for each position on board try to generate new pieces places to stay/place
+                    // if there is no same pieces in list then there is no problem,
+                    //   but there are/will be, should remember are this piece in different sequence
+                    //   was placed here? or remove clones
                     if (prepareBeard(x, y, board)) {
                         boards.add(board);
                     }
@@ -64,6 +68,8 @@ public class MainCli {
     void prepareBeard(int xToStart, int yToStart, Board board) {
         // sortedListOfPiecesToPlaceOnBoard more invasive on front, then less moves are needed
         for (Piece piece : sortedListOfPiecesToPlaceOnBoard) {
+            // this method fill the list of free positions to use if new piece has not got collisions
+            // and place the piece on board
             board.placePieceInPlaceWhereHasNotGotCollisions(piece);
         }
     }
