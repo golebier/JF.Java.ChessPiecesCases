@@ -26,6 +26,7 @@ import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 public class ChessBoard {
     // TODO for tests add what pieces cross in what places
     private List<Position> freePositions = new ArrayList<Position>();
+    private List<Position> piecesPositions = new ArrayList<Position>();
     private DataInputDimensions dimensions;
     
     public ChessBoard(DataInputDimensions dimensions) {
@@ -53,7 +54,7 @@ public class ChessBoard {
         if (isValid(piece.getX(), piece.getY())) {
             return false;
         }
-        List<Position> newFreePositions = piece.checkCollisions(freePositions);
+        List<Position> newFreePositions = piece.checkCollisions(freePositions, piecesPositions);
         if (null == newFreePositions) {
             return false;
         }

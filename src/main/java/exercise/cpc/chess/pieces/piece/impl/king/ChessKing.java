@@ -32,7 +32,31 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
     }
     
     @Override
-    public List<Position> checkCollisions(List<Position> freePositions) {
+    public List<Position> checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
+        // place me in first free position from freePositions, remove this position and check my collisions with rest of objects
+        
+        // TODO take first free position
+        // I can be placed here, but AmI not disturb others?
+        Position myFreeposition = freePositions.get(0);
+        // TODO for this position check my collisions
+        //        if (amIDisturbOthers(myFreeposition.getX(), myFreeposition.getY())) {
+        //            return null;
+        //        }
+        
+        //        List<Position> 
+        //        
+        //        !(x - 1, y - 1)
+        //            newFreePositions.remove(myFreeposition);
+        //        (x, y - 1)
+        //        (x + 1, y - 1)
+        //        (x - 1, y)
+        //        (x + 1, y)
+        //        (x - 1, y + 1)
+        //        (x, y + 1)
+        //        (x + 1, y + 1))
+        //        newFreePositions.remove(myFreeposition);
+        //        piecesPositions.add(myFreeposition);
+        //        return newFreePositions;
         
         return null;
     }

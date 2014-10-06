@@ -32,7 +32,7 @@ public class ChessPieceBase implements ChessPiece {
     }
     
     @Override
-    public List<Position> checkCollisions(List<Position> freePositions) {
+    public List<Position> checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
         // TODO Auto-generated method stub
         return null;
     }

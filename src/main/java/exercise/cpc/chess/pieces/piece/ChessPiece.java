@@ -22,7 +22,7 @@ import exercise.cpc.chess.pieces.piece.position.Position;
  */
 public interface ChessPiece {
     // TODO
-    List<Position> checkCollisions(List<Position> freePositions);
+    List<Position> checkCollisions(List<Position> freePositions, List<Position> piecesPositions);
     
     int getX();
     
