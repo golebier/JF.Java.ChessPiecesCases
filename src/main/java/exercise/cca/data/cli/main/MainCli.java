@@ -43,6 +43,16 @@ public class MainCli {
         // TODO just adding final solutions, make this correct when all done.
         // DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(), new DataInputReaderPieces());
         // dataInputReaderSimple.read(args)
+        
+        /** TODO first algorithm:
+            List<Board> boards = new ArrayList<Board>();
+            for (int y = 0; y < boardYSize(); ++x) {
+                for (int x = 0; x < boardXSize(); ++x) {
+                    prepareBeard();
+                }
+            }
+            printBoards(boards);
+        */
         System.exit(OK_EXIT_STATUS);
     }
     

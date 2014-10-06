@@ -1,4 +1,4 @@
-package exercise.cpc.chess.pieces.basic;
+package exercise.cpc.chess.pieces.piece;
 
 //
 //Copyright (c) 1979, the Gra projects.
@@ -16,6 +16,8 @@ package exercise.cpc.chess.pieces.basic;
  *         http
  *         ://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
  */
-public interface ChessPiecesBase {
+public interface ChessPiece {
     // TODO
+    boolean canCollidate();
+    
 }
