@@ -54,12 +54,11 @@ public class ChessBoard {
         if (isValid(piece.getX(), piece.getY())) {
             return false;
         }
-        List<Position> newFreePositions = piece.checkCollisions(freePositions, piecesPositions);
-        if (null == newFreePositions) {
-            return false;
-        }
-        freePositions = newFreePositions;
-        return true;
+        System.out.println(freePositions.size());
+        // just for debug
+        boolean state = piece.checkCollisions(freePositions, piecesPositions);
+        System.out.println(freePositions.size());
+        return state;
     }
     
     private boolean isValid(int x, int y) {

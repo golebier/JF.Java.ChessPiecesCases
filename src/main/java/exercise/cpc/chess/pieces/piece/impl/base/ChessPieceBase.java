@@ -31,10 +31,11 @@ public class ChessPieceBase implements ChessPiece {
         this.xy = xy;
     }
     
+    // TODO extract protected methods
+    
     @Override
-    public List<Position> checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
-        // TODO Auto-generated method stub
-        return null;
+    public boolean checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
+        return false;
     }
     
     @Override

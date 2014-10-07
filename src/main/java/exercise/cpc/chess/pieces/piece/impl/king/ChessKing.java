@@ -7,7 +7,10 @@ package exercise.cpc.chess.pieces.piece.impl.king;
 //Use of this source code is governed by a MIT-style license
 //that can be found in the LICENSE file.
 //
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.collections.ListUtils;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.base.ChessPieceBase;
@@ -32,32 +35,57 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
     }
     
     @Override
-    public List<Position> checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
+    public boolean checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
         // place me in first free position from freePositions, remove this position and check my collisions with rest of objects
         
         // TODO take first free position
         // I can be placed here, but AmI not disturb others?
-        Position myFreeposition = freePositions.get(0);
+        
+        // TODO maybe move to another free position
+        for (Position myFreeposition : freePositions) {
+            if (hasNotGotCollisions(myFreeposition)) {
+                List<Position> positionsToRemoveFromFreePositionsList = new ArrayList<Position>();
+                // TODO add position I'm collide with
+                //                positionsToRemoveFromFreePositionsList.add(x - 1, y -1);
+                positionsToRemoveFromFreePositionsList.add(myFreeposition);
+                ListUtils.removeAll(freePositions, positionsToRemoveFromFreePositionsList);
+                return true;
+            }
+        }
+        // this mean we could not find free position to set this piece, then this variation is wrong
+        return false;
+    }
+    
+    private boolean hasNotGotCollisions(Position myFreeposition) {
+        
         // TODO for this position check my collisions
-        //        if (amIDisturbOthers(myFreeposition.getX(), myFreeposition.getY())) {
-        //            return null;
-        //        }
+//                if (amIDisturbOthers(myFreeposition.getX(), myFreeposition.getY())) {
+//                    return null;
+//                }
         
-        //        List<Position> 
-        //        
-        //        !(x - 1, y - 1)
-        //            newFreePositions.remove(myFreeposition);
-        //        (x, y - 1)
-        //        (x + 1, y - 1)
-        //        (x - 1, y)
-        //        (x + 1, y)
-        //        (x - 1, y + 1)
-        //        (x, y + 1)
-        //        (x + 1, y + 1))
-        //        newFreePositions.remove(myFreeposition);
-        //        piecesPositions.add(myFreeposition);
-        //        return newFreePositions;
-        
-        return null;
+                // TODO move to Base with protected locate here counting collisions
+                // TODO then catch false and move to another free position to avoid removing this board
+                int x = myFreeposition.getX();
+                int y = myFreeposition.getY();
+
+                for (Position piecePosition : piecesPositions) {
+                    Position tmp = new Position(x - 1, y - 1);
+                    if (piecesPositions.contains(tmp)) {
+                        return false;
+                    }
+                    tmp.setX(x);
+                    tmp.setY(y - 1);;
+                    if (piecesPositions.contains(tmp)) {
+                        return false;
+                    }
+                    (x, y - 1)
+                    (x + 1, y - 1)
+                    (x - 1, y)
+                    (x + 1, y)
+                    (x - 1, y + 1)
+                    (x, y + 1)
+                    (x + 1, y + 1))
+                }
+        return false;
     }
 }
