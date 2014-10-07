@@ -50,7 +50,7 @@ public class ChessBoard {
      *   true if could.
      */
     public boolean placePieceInPlaceWhereHasNotGotCollisions(ChessPiece piece) {
-        if (isValid(piece.getX(), piece.getY())) {
+        if (!isValid(piece.getX(), piece.getY())) {
             return false;
         }
         System.out.println(freePositions.size());
