@@ -43,12 +43,13 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
         
         // TODO maybe move to another free position
         for (Position myFreeposition : freePositions) {
-            if (hasNotGotCollisions(myFreeposition)) {
+            if (hasNotGotCollisions(myFreeposition, piecesPositions)) {
                 List<Position> positionsToRemoveFromFreePositionsList = new ArrayList<Position>();
                 // TODO add position I'm collide with
                 //                positionsToRemoveFromFreePositionsList.add(x - 1, y -1);
                 positionsToRemoveFromFreePositionsList.add(myFreeposition);
                 ListUtils.removeAll(freePositions, positionsToRemoveFromFreePositionsList);
+                xy = myFreeposition;
                 return true;
             }
         }
@@ -56,36 +57,50 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
         return false;
     }
     
-    private boolean hasNotGotCollisions(Position myFreeposition) {
+    private boolean hasNotGotCollisions(Position myFreeposition, List<Position> piecesPositions) {
+        int x = myFreeposition.getX();
+        int y = myFreeposition.getY();
         
-        // TODO for this position check my collisions
-//                if (amIDisturbOthers(myFreeposition.getX(), myFreeposition.getY())) {
-//                    return null;
-//                }
-        
-                // TODO move to Base with protected locate here counting collisions
-                // TODO then catch false and move to another free position to avoid removing this board
-                int x = myFreeposition.getX();
-                int y = myFreeposition.getY();
-
-                for (Position piecePosition : piecesPositions) {
-                    Position tmp = new Position(x - 1, y - 1);
-                    if (piecesPositions.contains(tmp)) {
-                        return false;
-                    }
-                    tmp.setX(x);
-                    tmp.setY(y - 1);;
-                    if (piecesPositions.contains(tmp)) {
-                        return false;
-                    }
-                    (x, y - 1)
-                    (x + 1, y - 1)
-                    (x - 1, y)
-                    (x + 1, y)
-                    (x - 1, y + 1)
-                    (x, y + 1)
-                    (x + 1, y + 1))
-                }
+        Position tmp = new Position(x - 1, y - 1);
+        if (piecesPositions.contains(tmp)) {
+            return false;
+        }
+        tmp.setX(x);
+        //        tmp.setY(y - 1);
+        if (piecesPositions.contains(tmp)) {
+            return false;
+        }
+        //                    tmp.setX(x);
+        tmp.setY(y + 1);
+        ;
+        if (piecesPositions.contains(tmp)) {
+            return false;
+        }
+        tmp.setX(x + 1);
+        //                    tmp.setY(y - 1);
+        if (piecesPositions.contains(tmp)) {
+            return false;
+        }
+        tmp.setX(x - 1);
+        tmp.setY(y);
+        if (piecesPositions.contains(tmp)) {
+            return false;
+        }
+        tmp.setX(x + 1);
+        //                    tmp.setY(y);
+        if (piecesPositions.contains(tmp)) {
+            return false;
+        }
+        tmp.setX(x + 1);
+        tmp.setY(y + 1);
+        if (piecesPositions.contains(tmp)) {
+            return false;
+        }
+        tmp.setX(x - 1);
+        tmp.setY(y + 1);
+        if (piecesPositions.contains(tmp)) {
+            return false;
+        }
         return false;
     }
 }

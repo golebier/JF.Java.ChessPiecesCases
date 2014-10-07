@@ -10,7 +10,7 @@ package exercise.cpc.chess.board;
 import org.testng.annotations.Test;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
-import exercise.cpc.chess.pieces.piece.impl.base.ChessPieceBase;
+import exercise.cpc.chess.pieces.piece.impl.king.ChessKing;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 
 /**
@@ -34,11 +34,11 @@ public class ChessBoardTest {
         // TEST try place the piece
         // TEST revert changes if piece has collision << when checking has collision then free positions to use them later
         // TEST try place next piece
-        ChessPiece firstKing = new ChessPieceBase(0, 0);
+        ChessPiece firstKing = new ChessKing(0, 0);
         // this one is easy
         chessBoard.placePieceInPlaceWhereHasNotGotCollisions(firstKing);
         
-        ChessPiece secondKing = new ChessPieceBase(2, 2);
+        ChessPiece secondKing = new ChessKing(2, 2);
         // this one should show a few problems
         chessBoard.placePieceInPlaceWhereHasNotGotCollisions(secondKing);
     }

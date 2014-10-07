@@ -50,7 +50,6 @@ public class ChessBoard {
      *   true if could.
      */
     public boolean placePieceInPlaceWhereHasNotGotCollisions(ChessPiece piece) {
-        // TODO test is this good path
         if (isValid(piece.getX(), piece.getY())) {
             return false;
         }
