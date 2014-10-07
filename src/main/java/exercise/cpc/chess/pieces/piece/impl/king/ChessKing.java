@@ -31,13 +31,14 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
         super(xy);
     }
     
+    // TODO move to ChessPieceBase
     @Override
     public boolean checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
         for (Position myFreeposition : freePositions) {
             if (hasGotCollision(myFreeposition, piecesPositions)) {
                 continue;
             }
-            removeCollisionsPositions(myFreeposition, freePositions);
+            placePieceOnBoard(myFreeposition, freePositions);
             xy = myFreeposition;
             piecesPositions.add(myFreeposition);
             return true;
@@ -47,7 +48,7 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
     }
     
     // TODO name is deprecated, change it
-    private void removeCollisionsPositions(Position myFreeposition, List<Position> freePositions) {
+    private void placePieceOnBoard(Position myFreeposition, List<Position> freePositions) {
         freePositions.remove(myFreeposition);
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();

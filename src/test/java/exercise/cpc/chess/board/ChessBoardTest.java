@@ -7,6 +7,9 @@ package exercise.cpc.chess.board;
 //Use of this source code is governed by a MIT-style license
 //that can be found in the LICENSE file.
 //
+import java.util.ArrayList;
+import java.util.List;
+
 import org.testng.annotations.Test;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
@@ -26,31 +29,29 @@ import exercise.cpc.data.output.display.DataOutputDisplay;
  */
 public class ChessBoardTest {
     @Test
-    public void f() {
-        
-        // TODO now just to fast check the idea
-        ChessBoard chessBoard = new ChessBoard(new DataInputDimensions(3, 3));//(3, 3));//(6, 6));
-        chessBoard.initialize();
+    public void simpleNotRealTestJustDisplaywhatHappendWwhenTwoKingsArePlaced() {
+        ChessBoard chessBoard = new ChessBoard(new DataInputDimensions(3, 4));
+        chessBoard.initialize(0, 1);
         
         DataOutputDisplay dod = new DataOutputDisplay();
         // TODO do this right, just to see what is going on
         dod.print(chessBoard);
         System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         
-        // TEST using free positions
-        // TEST try place the piece
-        // TEST revert changes if piece has collision << when checking has collision then free positions to use them later
-        // TEST try place next piece
-        ChessPiece firstKing = new ChessKing(0, 0);
-        // this one is easy
-        System.out.println(chessBoard.placePieceInPlaceWhereHasNotGotCollisions(firstKing));
-        dod.print(chessBoard);
-        System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
+        List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
+        piecesList.add(new ChessKing(0, 0));
+        piecesList.add(new ChessKing(0, 0));
         
-        ChessPiece secondKing = new ChessKing(0, 0);
-        // this one should show a few problems
-        System.out.println(chessBoard.placePieceInPlaceWhereHasNotGotCollisions(secondKing));
-        dod.print(chessBoard);
-        System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
+        for (ChessPiece piece : piecesList) {
+            System.out.println(chessBoard.placePieceInPlaceWhereHasNotGotCollisions(piece));
+            dod.print(chessBoard);
+            System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
+        }
+    }
+    
+    @Test
+    public void simpleNotTestJustDisplaywhatHappendWwhenTwoKingsArePlaced() {
+        // TODO in  present implementation each board will be the same
+        // TODO add random first position with checking is not used on prev boards?  
     }
 }

@@ -24,7 +24,6 @@ import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
  *         http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
  */
 public class ChessBoard {
-    // TODO for tests add what pieces cross in what places
     private List<Position> freePositions = new ArrayList<Position>();
     private List<Position> piecesPositions = new ArrayList<Position>();
     private DataInputDimensions dimensions;
@@ -33,9 +32,16 @@ public class ChessBoard {
         this.dimensions = dimensions;
     }
     
-    public void initialize() {
-        for (int y = 0; y < dimensions.getM(); ++y) {
-            for (int x = 0; x < dimensions.getN(); ++x) {
+    // TODO change making free positions
+    // use start position as start point
+    public void initialize(int startX, int startY) {
+        for (int x = startX; x < dimensions.getN(); ++x) {
+            for (int y = startY; y < dimensions.getM(); ++y) {
+                freePositions.add(new Position(x, y));
+            }
+        }
+        for (int x = 0; x < startX; ++x) {
+            for (int y = 0; y < startY; ++y) {
                 freePositions.add(new Position(x, y));
             }
         }
@@ -50,14 +56,11 @@ public class ChessBoard {
      *   true if could.
      */
     public boolean placePieceInPlaceWhereHasNotGotCollisions(ChessPiece piece) {
-        if (!isValid(piece.getX(), piece.getY())) {
-            return false;
-        }
-        System.out.println(freePositions.size() + ", " + piecesPositions.size());
-        // just for debug
-        boolean state = piece.checkCollisions(freePositions, piecesPositions);
-        System.out.println(freePositions.size() + ", " + piecesPositions.size());
-        return state;
+        // TODO review this, in present implementation has no sense
+        //        if (!isValid(piece.getX(), piece.getY())) {
+        //            return false;
+        //        }
+        return piece.checkCollisions(freePositions, piecesPositions);
     }
     
     private boolean isValid(int x, int y) {

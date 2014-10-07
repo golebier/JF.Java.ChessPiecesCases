@@ -26,7 +26,7 @@ public class DataOutputDisplay {
         
         for (int i = 0; i < chessBoard.getN(); ++i) {
             for (int j = 0; j < chessBoard.getM(); ++j) {
-                final Position position = new Position(j, i);
+                final Position position = new Position(i, j);
                 if (chessBoard.getPiecesPositions().contains(position)) {
                     data.append("P"); // TODO Piece name
                 } else if (chessBoard.getFreePositions().contains(position)) {
