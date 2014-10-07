@@ -48,6 +48,12 @@ public class MainCli {
             List<Board> boards = new ArrayList<Board>();
             for (int y = 0; y < boardYSize(); ++y) {
                 for (int x = 0; x < boardXSize(); ++x) {
+                
+                // TODO create list of free positions
+                 * use auto mode, what with start position?
+                
+                
+                
                     Board board = new Board();
                     // for each position on board try to generate new pieces places to stay/place
                     // if there is no same pieces in list then there is no problem,

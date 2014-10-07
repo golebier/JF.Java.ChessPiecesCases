@@ -26,6 +26,21 @@ public class Position {
         this.y = y;
     }
     
+    @Override
+    public boolean equals(Object position) {
+        if (!(position instanceof Position)) {
+            return false;
+        }
+        Position tested = (Position) position;
+        if (tested.getX() != x) {
+            return false;
+        }
+        if (tested.getY() != y) {
+            return false;
+        }
+        return true;
+    }
+    
     public int getX() {
         return x;
     }

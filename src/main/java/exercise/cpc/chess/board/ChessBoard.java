@@ -66,4 +66,28 @@ public class ChessBoard {
         }
         return true;
     }
+    
+    public Integer getN() {
+        return dimensions.getN();
+    }
+    
+    public Integer getM() {
+        return dimensions.getM();
+    }
+    
+    public List<Position> getFreePositions() {
+        return freePositions;
+    }
+    
+    public List<Position> getPiecesPositions() {
+        return piecesPositions;
+    }
+    
+    public void setFreePositions(List<Position> freePositions) {
+        this.freePositions = freePositions;
+    }
+    
+    public void setPiecesPositions(List<Position> piecesPositions) {
+        this.piecesPositions = piecesPositions;
+    }
 }

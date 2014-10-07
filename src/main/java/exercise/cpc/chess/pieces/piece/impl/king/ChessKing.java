@@ -33,21 +33,11 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
     
     @Override
     public boolean checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
-        // place me in first free position from freePositions, remove this position and check my collisions with rest of objects
-        
-        // TODO take first free position
-        // I can be placed here, but AmI not disturb others?
-        
-        // TODO maybe move to another free position
         for (Position myFreeposition : freePositions) {
             if (hasGotCollision(myFreeposition, piecesPositions)) {
                 continue;
             }
-            //                List<Position> positionsToRemoveFromFreePositionsList = new ArrayList<Position>();
-            
-            // test the remove in step
-            preparePositionsForRemovalFromFreePositionsList(myFreeposition, freePositions);
-            //                ListUtils.removeAll(freePositions, positionsToRemoveFromFreePositionsList);
+            removeCollisionsPositions(myFreeposition, freePositions);
             xy = myFreeposition;
             piecesPositions.add(myFreeposition);
             return true;
@@ -57,9 +47,7 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
     }
     
     // TODO name is deprecated, change it
-    private void preparePositionsForRemovalFromFreePositionsList(Position myFreeposition, List<Position> freePositions) {
-        // hm, way create list used as base to remove, when we can remove one by one?
-        
+    private void removeCollisionsPositions(Position myFreeposition, List<Position> freePositions) {
         freePositions.remove(myFreeposition);
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();
