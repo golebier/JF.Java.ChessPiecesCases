@@ -7,10 +7,7 @@ package exercise.cpc.chess.pieces.piece.impl.king;
 //Use of this source code is governed by a MIT-style license
 //that can be found in the LICENSE file.
 //
-import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.collections.ListUtils;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.base.ChessPieceBase;
@@ -43,63 +40,98 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
         
         // TODO maybe move to another free position
         for (Position myFreeposition : freePositions) {
-            if (hasNotGotCollisions(myFreeposition, piecesPositions)) {
-                List<Position> positionsToRemoveFromFreePositionsList = new ArrayList<Position>();
-                // TODO add position I'm collide with
-                //                positionsToRemoveFromFreePositionsList.add(x - 1, y -1);
-                positionsToRemoveFromFreePositionsList.add(myFreeposition);
-                ListUtils.removeAll(freePositions, positionsToRemoveFromFreePositionsList);
-                xy = myFreeposition;
-                return true;
+            if (hasGotCollision(myFreeposition, piecesPositions)) {
+                continue;
             }
+            //                List<Position> positionsToRemoveFromFreePositionsList = new ArrayList<Position>();
+            
+            // test the remove in step
+            preparePositionsForRemovalFromFreePositionsList(myFreeposition, freePositions);
+            //                ListUtils.removeAll(freePositions, positionsToRemoveFromFreePositionsList);
+            xy = myFreeposition;
+            piecesPositions.add(myFreeposition);
+            return true;
         }
         // this mean we could not find free position to set this piece, then this variation is wrong
         return false;
     }
     
-    private boolean hasNotGotCollisions(Position myFreeposition, List<Position> piecesPositions) {
+    // TODO name is deprecated, change it
+    private void preparePositionsForRemovalFromFreePositionsList(Position myFreeposition, List<Position> freePositions) {
+        // hm, way create list used as base to remove, when we can remove one by one?
+        
+        freePositions.remove(myFreeposition);
+        int x = myFreeposition.getX();
+        int y = myFreeposition.getY();
+        
+        Position tmp = new Position(x - 1, y - 1);
+        freePositions.remove(tmp);
+        tmp.setX(x);
+        //        tmp.setY(y - 1);
+        freePositions.remove(tmp);
+        //                    tmp.setX(x);
+        tmp.setY(y + 1);
+        freePositions.remove(tmp);
+        tmp.setX(x + 1);
+        //                    tmp.setY(y - 1);
+        freePositions.remove(tmp);
+        tmp.setX(x - 1);
+        tmp.setY(y);
+        freePositions.remove(tmp);
+        tmp.setX(x + 1);
+        //                    tmp.setY(y);
+        freePositions.remove(tmp);
+        tmp.setX(x + 1);
+        tmp.setY(y + 1);
+        freePositions.remove(tmp);
+        tmp.setX(x - 1);
+        tmp.setY(y + 1);
+        freePositions.remove(tmp);
+    }
+    
+    private boolean hasGotCollision(Position myFreeposition, List<Position> piecesPositions) {
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();
         
         Position tmp = new Position(x - 1, y - 1);
         if (piecesPositions.contains(tmp)) {
-            return false;
+            return true;
         }
         tmp.setX(x);
         //        tmp.setY(y - 1);
         if (piecesPositions.contains(tmp)) {
-            return false;
+            return true;
         }
         //                    tmp.setX(x);
         tmp.setY(y + 1);
         ;
         if (piecesPositions.contains(tmp)) {
-            return false;
+            return true;
         }
         tmp.setX(x + 1);
         //                    tmp.setY(y - 1);
         if (piecesPositions.contains(tmp)) {
-            return false;
+            return true;
         }
         tmp.setX(x - 1);
         tmp.setY(y);
         if (piecesPositions.contains(tmp)) {
-            return false;
+            return true;
         }
         tmp.setX(x + 1);
         //                    tmp.setY(y);
         if (piecesPositions.contains(tmp)) {
-            return false;
+            return true;
         }
         tmp.setX(x + 1);
         tmp.setY(y + 1);
         if (piecesPositions.contains(tmp)) {
-            return false;
+            return true;
         }
         tmp.setX(x - 1);
         tmp.setY(y + 1);
         if (piecesPositions.contains(tmp)) {
-            return false;
+            return true;
         }
         return false;
     }

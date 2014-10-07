@@ -53,10 +53,10 @@ public class ChessBoard {
         if (!isValid(piece.getX(), piece.getY())) {
             return false;
         }
-        System.out.println(freePositions.size());
+        System.out.println(freePositions.size() + ", " + piecesPositions.size());
         // just for debug
         boolean state = piece.checkCollisions(freePositions, piecesPositions);
-        System.out.println(freePositions.size());
+        System.out.println(freePositions.size() + ", " + piecesPositions.size());
         return state;
     }
     

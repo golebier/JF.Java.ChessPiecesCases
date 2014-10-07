@@ -27,19 +27,19 @@ public class ChessBoardTest {
     @Test
     public void f() {
         // TODO now just to fast check the idea
-        ChessBoard chessBoard = new ChessBoard(new DataInputDimensions(3, 3));
+        ChessBoard chessBoard = new ChessBoard(new DataInputDimensions(3, 3));//(6, 6));
         chessBoard.initialize();
         
         // TEST using free positions
         // TEST try place the piece
         // TEST revert changes if piece has collision << when checking has collision then free positions to use them later
         // TEST try place next piece
-        ChessPiece firstKing = new ChessKing(0, 0);
+        ChessPiece firstKing = new ChessKing(0, 0);//(2, 2);
         // this one is easy
-        chessBoard.placePieceInPlaceWhereHasNotGotCollisions(firstKing);
+        System.out.println(chessBoard.placePieceInPlaceWhereHasNotGotCollisions(firstKing));
         
-        ChessPiece secondKing = new ChessKing(2, 2);
+        ChessPiece secondKing = new ChessKing(2, 2);//(4, 4);
         // this one should show a few problems
-        chessBoard.placePieceInPlaceWhereHasNotGotCollisions(secondKing);
+        System.out.println(chessBoard.placePieceInPlaceWhereHasNotGotCollisions(secondKing));
     }
 }
