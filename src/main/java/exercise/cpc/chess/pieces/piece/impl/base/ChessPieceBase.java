@@ -35,6 +35,23 @@ public class ChessPieceBase implements ChessPiece {
     
     @Override
     public boolean checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
+        for (Position myFreeposition : freePositions) {
+            if (hasGotCollision(myFreeposition, piecesPositions)) {
+                continue;
+            }
+            placePieceOnBoard(myFreeposition, freePositions);
+            xy = myFreeposition;
+            piecesPositions.add(myFreeposition);
+            return true;
+        }
+        // this mean we could not find free position to set this piece, then this variation is wrong
+        return false;
+    }
+    
+    protected void placePieceOnBoard(Position myFreeposition, List<Position> freePositions) {
+    }
+    
+    protected boolean hasGotCollision(Position myFreeposition, List<Position> piecesPositions) {
         return false;
     }
     
@@ -46,5 +63,11 @@ public class ChessPieceBase implements ChessPiece {
     @Override
     public int getY() {
         return xy.getY();
+    }
+    
+    @Override
+    public String getName() {
+        // TODO Auto-generated method stub
+        return "p";
     }
 }

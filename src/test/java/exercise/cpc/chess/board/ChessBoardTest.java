@@ -34,18 +34,17 @@ public class ChessBoardTest {
         chessBoard.initialize(0, 1);
         
         DataOutputDisplay dod = new DataOutputDisplay();
-        // TODO do this right, just to see what is going on
-        dod.print(chessBoard);
-        System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
         piecesList.add(new ChessKing(0, 0));
         piecesList.add(new ChessKing(0, 0));
-        piecesList.add(new ChessKing(0, 0));
+        piecesList.add(new ChessKing(0, 0)); // TODO do this right, just to see what is going on
+        dod.print(chessBoard, piecesList);
+        System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         
         for (ChessPiece piece : piecesList) {
             System.out.println(chessBoard.placePieceInPlaceWhereHasNotGotCollisions(piece));
-            dod.print(chessBoard);
+            dod.print(chessBoard, piecesList);
             System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         }
     }

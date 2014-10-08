@@ -20,6 +20,7 @@ import org.springframework.core.io.ClassPathResource;
 import exercise.cpc.chess.board.ChessBoard;
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.king.ChessKing;
+import exercise.cpc.chess.pieces.piece.impl.rook.ChessRook;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.output.display.DataOutputDisplay;
 
@@ -63,7 +64,8 @@ public class MainCli {
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
         piecesList.add(new ChessKing(0, 0));
         piecesList.add(new ChessKing(0, 0));
-        piecesList.add(new ChessKing(0, 0));
+        //        piecesList.add(new ChessKing(0, 0));
+        piecesList.add(new ChessRook(0, 0));
         // remember used positions pear the piece, then removing will not be needed
         for (int x = 0; x < did.getN(); ++x) {
             for (int y = 0; y < did.getM(); ++y) {
@@ -77,12 +79,17 @@ public class MainCli {
                     }
                 }
                 System.out.println(">>>> " + isValid);
-                dod.print(chessBoard);
+                dod.print(chessBoard, piecesList);
                 System.out.println("<<<< " + isValid);
                 if (isValid) {
                     boards.add(chessBoard);
                 }
             }
+        }
+        System.out.println("--------------Valid boards-(" + boards.size() + ")------------------");
+        for (ChessBoard chessBoard : boards) {
+            dod.print(chessBoard, piecesList);
+            System.out.println("---------------------------------");
         }
         System.out.println("DoneIn: " + (System.currentTimeMillis() - baganAt));
         // TODO just adding final solutions, make this correct when all done.

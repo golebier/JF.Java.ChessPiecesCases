@@ -1,4 +1,4 @@
-package exercise.cpc.chess.pieces.piece.impl.king;
+package exercise.cpc.chess.pieces.piece.impl.rook;
 
 //
 //Copyright (c) 1979, the Gra projects.
@@ -21,13 +21,13 @@ import exercise.cpc.chess.pieces.piece.position.Position;
  *         https://google.com/+RadoslawGolebiewski
  *         http://www.linkedin.com/pub/rados%C5%82aw-go%C5%82%C4%99biewski/70/832/35
  */
-public class ChessKing extends ChessPieceBase implements ChessPiece {
+public class ChessRook extends ChessPieceBase implements ChessPiece {
     
-    public ChessKing(int x, int y) {
+    public ChessRook(int x, int y) {
         super(x, y);
     }
     
-    public ChessKing(Position xy) {
+    public ChessRook(Position xy) {
         super(xy);
     }
     
@@ -112,6 +112,6 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
     @Override
     public String getName() {
         // TODO Auto-generated method stub
-        return "K";
+        return "R";
     }
 }

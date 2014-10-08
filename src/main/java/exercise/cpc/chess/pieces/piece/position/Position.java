@@ -1,5 +1,7 @@
 package exercise.cpc.chess.pieces.piece.position;
 
+import exercise.cpc.chess.pieces.piece.ChessPiece;
+
 //
 //Copyright (c) 1979, the Gra projects.
 //Please see the AUTHORS file for details.
@@ -27,18 +29,28 @@ public class Position {
     }
     
     @Override
-    public boolean equals(Object position) {
-        if (!(position instanceof Position)) {
-            return false;
+    public boolean equals(Object object) {
+        if (object instanceof ChessPiece) {
+            ChessPiece tested = (ChessPiece) object;
+            if (tested.getX() != x) {
+                return false;
+            }
+            if (tested.getY() != y) {
+                return false;
+            }
+            return true;
         }
-        Position tested = (Position) position;
-        if (tested.getX() != x) {
-            return false;
+        if (object instanceof Position) {
+            Position tested = (Position) object;
+            if (tested.getX() != x) {
+                return false;
+            }
+            if (tested.getY() != y) {
+                return false;
+            }
+            return true;
         }
-        if (tested.getY() != y) {
-            return false;
-        }
-        return true;
+        return false;
     }
     
     public int getX() {

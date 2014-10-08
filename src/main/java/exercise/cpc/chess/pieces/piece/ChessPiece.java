@@ -27,4 +27,6 @@ public interface ChessPiece {
     int getX();
     
     int getY();
+    
+    String getName();
 }
