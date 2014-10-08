@@ -32,19 +32,21 @@ public class ChessBoard {
         this.dimensions = dimensions;
     }
     
-    // TODO change making free positions
-    // use start position as start point
+    public void initialize() {
+        for (int x = 0; x < dimensions.getN(); ++x) {
+            for (int y = 0; y < dimensions.getM(); ++y) {
+                freePositions.add(new Position(x, y));
+            }
+        }
+    }
+    
+    // TODO could this be lighter?
     public void initialize(int startX, int startY) {
-        for (int x = startX; x < dimensions.getN(); ++x) {
-            for (int y = startY; y < dimensions.getM(); ++y) {
-                freePositions.add(new Position(x, y));
-            }
-        }
-        for (int x = 0; x < startX; ++x) {
-            for (int y = 0; y < startY; ++y) {
-                freePositions.add(new Position(x, y));
-            }
-        }
+        initialize();
+        int index = freePositions.indexOf(new Position(startX, startY));
+        List<Position> beg = new ArrayList<Position>(freePositions.subList(0, index - 1));
+        freePositions.removeAll(beg);
+        freePositions.addAll(beg);
     }
     
     /**

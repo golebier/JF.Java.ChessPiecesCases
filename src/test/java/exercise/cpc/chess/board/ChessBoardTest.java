@@ -30,7 +30,7 @@ import exercise.cpc.data.output.display.DataOutputDisplay;
 public class ChessBoardTest {
     @Test
     public void simpleNotRealTestJustDisplaywhatHappendWwhenTwoKingsArePlaced() {
-        ChessBoard chessBoard = new ChessBoard(new DataInputDimensions(3, 4));
+        ChessBoard chessBoard = new ChessBoard(new DataInputDimensions(3, 3));
         chessBoard.initialize(0, 1);
         
         DataOutputDisplay dod = new DataOutputDisplay();
@@ -39,6 +39,7 @@ public class ChessBoardTest {
         System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
+        piecesList.add(new ChessKing(0, 0));
         piecesList.add(new ChessKing(0, 0));
         piecesList.add(new ChessKing(0, 0));
         
