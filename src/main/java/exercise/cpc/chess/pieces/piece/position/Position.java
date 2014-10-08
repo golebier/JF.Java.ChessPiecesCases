@@ -30,6 +30,8 @@ public class Position {
     
     @Override
     public boolean equals(Object object) {
+        // TODO make position interface and then ChessPiece and present Position implement it
+        // and then only one instanceof and one if, implementations no need to be change
         if (object instanceof ChessPiece) {
             ChessPiece tested = (ChessPiece) object;
             if (tested.getX() != x) {

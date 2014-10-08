@@ -11,6 +11,7 @@ import java.util.List;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.position.Position;
+import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 
 /**
  *  TODO write more.
@@ -22,16 +23,23 @@ import exercise.cpc.chess.pieces.piece.position.Position;
  */
 public class ChessPieceBase implements ChessPiece {
     protected Position xy;
+    protected DataInputDimensions did;
     
+    @Deprecated
     public ChessPieceBase(int x, int y) {
         xy = new Position(x, y);
     }
     
+    @Deprecated
     public ChessPieceBase(Position xy) {
         this.xy = xy;
     }
     
     // TODO extract protected methods
+    
+    public ChessPieceBase(DataInputDimensions did) {
+        this.did = did;
+    }
     
     @Override
     public boolean checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {

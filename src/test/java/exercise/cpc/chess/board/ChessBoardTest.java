@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.king.ChessKing;
+import exercise.cpc.chess.pieces.piece.impl.rook.ChessRook;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.output.display.DataOutputDisplay;
 
@@ -31,14 +32,16 @@ public class ChessBoardTest {
     @Test
     public void simpleNotRealTestJustDisplaywhatHappendWwhenTwoKingsArePlaced() {
         ChessBoard chessBoard = new ChessBoard(new DataInputDimensions(3, 3));
-        chessBoard.initialize(0, 1);
+        chessBoard.initialize(0, 0);
         
         DataOutputDisplay dod = new DataOutputDisplay();
         
+        DataInputDimensions did = new DataInputDimensions(3, 3);
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
-        piecesList.add(new ChessKing(0, 0));
-        piecesList.add(new ChessKing(0, 0));
-        piecesList.add(new ChessKing(0, 0)); // TODO do this right, just to see what is going on
+        piecesList.add(new ChessKing(did));
+        //        piecesList.add(new ChessKing(did));
+        //        piecesList.add(new ChessKing(did));
+        piecesList.add(new ChessRook(did));
         dod.print(chessBoard, piecesList);
         System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         

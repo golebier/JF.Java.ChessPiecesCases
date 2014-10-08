@@ -12,6 +12,7 @@ import java.util.List;
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.base.ChessPieceBase;
 import exercise.cpc.chess.pieces.piece.position.Position;
+import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 
 /**
  *  TODO write more.
@@ -23,12 +24,18 @@ import exercise.cpc.chess.pieces.piece.position.Position;
  */
 public class ChessKing extends ChessPieceBase implements ChessPiece {
     
+    @Deprecated
     public ChessKing(int x, int y) {
         super(x, y);
     }
     
+    @Deprecated
     public ChessKing(Position xy) {
         super(xy);
+    }
+    
+    public ChessKing(DataInputDimensions did) {
+        super(did);
     }
     
     // TODO name is deprecated, change it

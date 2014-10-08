@@ -12,6 +12,7 @@ import java.util.List;
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.base.ChessPieceBase;
 import exercise.cpc.chess.pieces.piece.position.Position;
+import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 
 /**
  *  TODO write more.
@@ -23,12 +24,18 @@ import exercise.cpc.chess.pieces.piece.position.Position;
  */
 public class ChessRook extends ChessPieceBase implements ChessPiece {
     
+    @Deprecated
     public ChessRook(int x, int y) {
         super(x, y);
     }
     
+    @Deprecated
     public ChessRook(Position xy) {
         super(xy);
+    }
+    
+    public ChessRook(DataInputDimensions did) {
+        super(did);
     }
     
     // TODO name is deprecated, change it
@@ -36,75 +43,34 @@ public class ChessRook extends ChessPieceBase implements ChessPiece {
         freePositions.remove(myFreeposition);
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();
-        
-        Position tmp = new Position(x - 1, y - 1);
-        freePositions.remove(tmp);
+        Position tmp = new Position(x, y);
+        for (int xx = 0; xx < did.getN(); ++xx) {
+            tmp.setX(xx);
+            freePositions.remove(tmp);
+        }
         tmp.setX(x);
-        //        tmp.setY(y - 1);
-        freePositions.remove(tmp);
-        //                    tmp.setX(x);
-        tmp.setY(y + 1);
-        freePositions.remove(tmp);
-        tmp.setX(x + 1);
-        //                    tmp.setY(y - 1);
-        freePositions.remove(tmp);
-        tmp.setX(x - 1);
-        tmp.setY(y);
-        freePositions.remove(tmp);
-        tmp.setX(x + 1);
-        //                    tmp.setY(y);
-        freePositions.remove(tmp);
-        tmp.setX(x + 1);
-        tmp.setY(y + 1);
-        freePositions.remove(tmp);
-        tmp.setX(x - 1);
-        tmp.setY(y + 1);
-        freePositions.remove(tmp);
+        for (int yy = 0; yy < did.getM(); ++yy) {
+            tmp.setY(yy);
+            freePositions.remove(tmp);
+        }
     }
     
     protected boolean hasGotCollision(Position myFreeposition, List<Position> piecesPositions) {
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();
-        
-        Position tmp = new Position(x - 1, y - 1);
-        if (piecesPositions.contains(tmp)) {
-            return true;
+        Position tmp = new Position(x, y);
+        for (int xx = 0; xx < did.getN(); ++xx) {
+            tmp.setX(xx);
+            if (piecesPositions.contains(tmp)) {
+                return true;
+            }
         }
         tmp.setX(x);
-        //        tmp.setY(y - 1);
-        if (piecesPositions.contains(tmp)) {
-            return true;
-        }
-        //                    tmp.setX(x);
-        tmp.setY(y + 1);
-        ;
-        if (piecesPositions.contains(tmp)) {
-            return true;
-        }
-        tmp.setX(x + 1);
-        //                    tmp.setY(y - 1);
-        if (piecesPositions.contains(tmp)) {
-            return true;
-        }
-        tmp.setX(x - 1);
-        tmp.setY(y);
-        if (piecesPositions.contains(tmp)) {
-            return true;
-        }
-        tmp.setX(x + 1);
-        //                    tmp.setY(y);
-        if (piecesPositions.contains(tmp)) {
-            return true;
-        }
-        tmp.setX(x + 1);
-        tmp.setY(y + 1);
-        if (piecesPositions.contains(tmp)) {
-            return true;
-        }
-        tmp.setX(x - 1);
-        tmp.setY(y + 1);
-        if (piecesPositions.contains(tmp)) {
-            return true;
+        for (int yy = 0; yy < did.getM(); ++yy) {
+            tmp.setY(yy);
+            if (piecesPositions.contains(tmp)) {
+                return true;
+            }
         }
         return false;
     }

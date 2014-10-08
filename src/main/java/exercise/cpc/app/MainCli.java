@@ -62,10 +62,10 @@ public class MainCli {
         DataOutputDisplay dod = new DataOutputDisplay();
         // TODO generate this from DataInput
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
-        piecesList.add(new ChessKing(0, 0));
-        piecesList.add(new ChessKing(0, 0));
-        //        piecesList.add(new ChessKing(0, 0));
-        piecesList.add(new ChessRook(0, 0));
+        piecesList.add(new ChessKing(did));
+        piecesList.add(new ChessKing(did));
+        //        piecesList.add(new ChessKing(did));
+        piecesList.add(new ChessRook(did));
         // remember used positions pear the piece, then removing will not be needed
         for (int x = 0; x < did.getN(); ++x) {
             for (int y = 0; y < did.getM(); ++y) {
@@ -88,6 +88,7 @@ public class MainCli {
         }
         System.out.println("--------------Valid boards-(" + boards.size() + ")------------------");
         for (ChessBoard chessBoard : boards) {
+            // TODO this works only if each board has own piecesList, maybe simple write those names in the board?
             dod.print(chessBoard, piecesList);
             System.out.println("---------------------------------");
         }
