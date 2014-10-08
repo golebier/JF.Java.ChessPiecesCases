@@ -49,6 +49,7 @@ public class MainCli {
     }
     
     public void runCoreLogic(String[] args) throws IOException {
+        long baganAt = System.currentTimeMillis();
         List<ChessBoard> boards = new ArrayList<ChessBoard>();
         // TODO get board dimensions from parameters
         //        DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(),
@@ -83,7 +84,7 @@ public class MainCli {
                 }
             }
         }
-        
+        System.out.println("DoneIn: " + (System.currentTimeMillis() - baganAt));
         // TODO just adding final solutions, make this correct when all done.
         // DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(), new DataInputReaderPieces());
         // dataInputReaderSimple.read(args)
