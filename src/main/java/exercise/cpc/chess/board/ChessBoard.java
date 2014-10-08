@@ -44,7 +44,7 @@ public class ChessBoard {
     public void initialize(int startX, int startY) {
         initialize();
         int index = freePositions.indexOf(new Position(startX, startY));
-        List<Position> beg = new ArrayList<Position>(freePositions.subList(0, index - 1));
+        List<Position> beg = new ArrayList<Position>(freePositions.subList(0, index));
         freePositions.removeAll(beg);
         freePositions.addAll(beg);
     }
