@@ -19,7 +19,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import exercise.cpc.chess.board.ChessBoard;
 import exercise.cpc.chess.pieces.piece.ChessPiece;
-import exercise.cpc.chess.pieces.piece.impl.king.ChessKing;
+import exercise.cpc.chess.pieces.piece.impl.bishop.ChessBishop;
 import exercise.cpc.chess.pieces.piece.impl.rook.ChessRook;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.output.display.DataOutputDisplay;
@@ -61,11 +61,14 @@ public class MainCli {
         // TODO change this, olny for debug now
         DataOutputDisplay dod = new DataOutputDisplay();
         // TODO generate this from DataInput
+        // TODO should be sorted from most invassive to the less
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
-        piecesList.add(new ChessKing(did));
-        piecesList.add(new ChessKing(did));
-        //        piecesList.add(new ChessKing(did));
+        // FIXME 2K & R, should have 4Boards
+        piecesList.add(new ChessBishop(did));
         piecesList.add(new ChessRook(did));
+        //        piecesList.add(new ChessKing(did));
+        //        piecesList.add(new ChessKing(did));
+        //        piecesList.add(new ChessKing(did));
         // remember used positions pear the piece, then removing will not be needed
         for (int x = 0; x < did.getN(); ++x) {
             for (int y = 0; y < did.getM(); ++y) {
@@ -78,21 +81,23 @@ public class MainCli {
                         break;
                     }
                 }
-                System.out.println(">>>> " + isValid);
-                dod.print(chessBoard, piecesList);
-                System.out.println("<<<< " + isValid);
+                if (isValid) {
+                    System.out.println(">>>> " + isValid);
+                    dod.print(chessBoard, piecesList);
+                    System.out.println("<<<< " + isValid);
+                }
                 if (isValid) {
                     boards.add(chessBoard);
                 }
             }
         }
-        System.out.println("--------------Valid boards-(" + boards.size() + ")------------------");
-        for (ChessBoard chessBoard : boards) {
-            // TODO this works only if each board has own piecesList, maybe simple write those names in the board?
-            dod.print(chessBoard, piecesList);
-            System.out.println("---------------------------------");
-        }
-        System.out.println("DoneIn: " + (System.currentTimeMillis() - baganAt));
+        //        System.out.println("--------------Valid boards-(" + boards.size() + ")------------------");
+        //        for (ChessBoard chessBoard : boards) {
+        //            // TODO this works only if each board has own piecesList, maybe simple write those names in the board?
+        //            dod.print(chessBoard, piecesList);
+        //            System.out.println("---------------------------------");
+        //        }
+        System.out.println("DoneIn: " + (System.currentTimeMillis() - baganAt) + ", Boards variants: " + boards.size());
         // TODO just adding final solutions, make this correct when all done.
         // DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(), new DataInputReaderPieces());
         // dataInputReaderSimple.read(args)

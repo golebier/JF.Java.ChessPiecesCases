@@ -13,8 +13,7 @@ import java.util.List;
 import org.testng.annotations.Test;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
-import exercise.cpc.chess.pieces.piece.impl.king.ChessKing;
-import exercise.cpc.chess.pieces.piece.impl.rook.ChessRook;
+import exercise.cpc.chess.pieces.piece.impl.bishop.ChessBishop;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.output.display.DataOutputDisplay;
 
@@ -31,17 +30,17 @@ import exercise.cpc.data.output.display.DataOutputDisplay;
 public class ChessBoardTest {
     @Test
     public void simpleNotRealTestJustDisplaywhatHappendWwhenTwoKingsArePlaced() {
-        ChessBoard chessBoard = new ChessBoard(new DataInputDimensions(3, 3));
-        chessBoard.initialize(0, 0);
+        DataInputDimensions did = new DataInputDimensions(6, 6);
+        ChessBoard chessBoard = new ChessBoard(did);
+        chessBoard.initialize(2, 3);
         
         DataOutputDisplay dod = new DataOutputDisplay();
-        
-        DataInputDimensions did = new DataInputDimensions(3, 3);
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
-        piecesList.add(new ChessKing(did));
         //        piecesList.add(new ChessKing(did));
         //        piecesList.add(new ChessKing(did));
-        piecesList.add(new ChessRook(did));
+        //        piecesList.add(new ChessKing(did));
+        //        piecesList.add(new ChessRook(did));
+        piecesList.add(new ChessBishop(did));
         dod.print(chessBoard, piecesList);
         System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         
