@@ -32,7 +32,7 @@ public class ChessBoardTest {
     public void simpleNotRealTestJustDisplaywhatHappendWwhenTwoKingsArePlaced() {
         DataInputDimensions did = new DataInputDimensions(6, 6);
         ChessBoard chessBoard = new ChessBoard(did);
-        chessBoard.initialize(2, 3);
+        chessBoard.initialize(3, 3);
         
         DataOutputDisplay dod = new DataOutputDisplay();
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();

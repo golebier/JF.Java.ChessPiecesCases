@@ -53,7 +53,8 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
         tmp.setY(y + 1);
         freePositions.remove(tmp);
         tmp.setX(x + 1);
-        //                    tmp.setY(y - 1);
+        freePositions.remove(tmp);
+        tmp.setY(y - 1);
         freePositions.remove(tmp);
         tmp.setX(x - 1);
         tmp.setY(y);
@@ -89,7 +90,10 @@ public class ChessKing extends ChessPieceBase implements ChessPiece {
             return true;
         }
         tmp.setX(x + 1);
-        //                    tmp.setY(y - 1);
+        if (piecesPositions.contains(tmp)) {
+            return true;
+        }
+        tmp.setY(y - 1);
         if (piecesPositions.contains(tmp)) {
             return true;
         }
