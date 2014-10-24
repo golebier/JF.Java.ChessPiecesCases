@@ -13,7 +13,7 @@ import java.util.List;
 import org.testng.annotations.Test;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
-import exercise.cpc.chess.pieces.piece.impl.king.ChessKing;
+import exercise.cpc.chess.pieces.piece.impl.knight.ChessKnight;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.output.display.DataOutputDisplay;
 
@@ -38,10 +38,11 @@ public class ChessBoardTest {
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
         //        piecesList.add(new ChessKing(did));
         //        piecesList.add(new ChessKing(did));
-        piecesList.add(new ChessKing(did));
+        //        piecesList.add(new ChessKing(did));
         //        piecesList.add(new ChessRook(did));
         //        piecesList.add(new ChessBishop(did));
         //        piecesList.add(new ChessQueen(did));
+        piecesList.add(new ChessKnight(did));
         dod.print(chessBoard, piecesList);
         System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         

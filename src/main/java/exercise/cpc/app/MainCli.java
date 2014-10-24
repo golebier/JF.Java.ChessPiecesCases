@@ -83,6 +83,7 @@ public class MainCli {
                 // add threads, for each initial position run new variation for pieces and free
                 // those should be done on threads too
                 // what with repetitions?
+                // each variation makes N next level variations, and levels are three
                 ChessBoard chessBoard = new ChessBoard(did);
                 chessBoard.initialize(x, y);
                 boolean isValid = false;
@@ -98,6 +99,7 @@ public class MainCli {
                     System.out.println("<<<< " + isValid);
                 }
                 if (isValid) {
+                    // TODO add if not exists
                     boards.add(chessBoard);
                 }
             }
