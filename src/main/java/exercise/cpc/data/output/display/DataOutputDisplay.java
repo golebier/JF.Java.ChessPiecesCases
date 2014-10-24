@@ -38,9 +38,9 @@ public class DataOutputDisplay {
                         data.append("P");
                     }
                 } else if (chessBoard.getFreePositions().contains(position)) {
-                    data.append(".");
+                    data.append("-");
                 } else {
-                    data.append("X");
+                    data.append("*");
                 }
             }
             data.append("\n");

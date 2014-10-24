@@ -9,6 +9,7 @@ package exercise.cpc.app;
 //
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
@@ -20,6 +21,10 @@ import org.springframework.core.io.ClassPathResource;
 import exercise.cpc.chess.board.ChessBoard;
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.bishop.ChessBishop;
+import exercise.cpc.chess.pieces.piece.impl.king.ChessKing;
+import exercise.cpc.chess.pieces.piece.impl.knight.ChessKnight;
+import exercise.cpc.chess.pieces.piece.impl.queen.ChessQueen;
+import exercise.cpc.chess.pieces.piece.impl.rook.ChessRook;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.output.display.DataOutputDisplay;
 
@@ -55,7 +60,7 @@ public class MainCli {
         //        DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(),
         //                new DataInputReaderPieces());
         //        DataInput di = dataInputReaderSimple.read(args);
-        DataInputDimensions did = new DataInputDimensions(7, 7);
+        DataInputDimensions did = new DataInputDimensions(5, 5);
         
         // TODO change this, olny for debug now
         DataOutputDisplay dod = new DataOutputDisplay();
@@ -64,14 +69,14 @@ public class MainCli {
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
         // FIXME 2K & R, should have 4Boards
         // FIXME B & R, should have 8Boards
-        //        piecesList.add(new ChessQueen(did));
+        piecesList.add(new ChessQueen(did));
         //        piecesList.add(new ChessQueen(did));
         piecesList.add(new ChessBishop(did));
-        piecesList.add(new ChessBishop(did));
-        //        //        piecesList.add(new ChessRook(did));
-        //        //        piecesList.add(new ChessKnight(did));
+        //        piecesList.add(new ChessBishop(did));
+        piecesList.add(new ChessRook(did));
+        piecesList.add(new ChessKnight(did));
         //        piecesList.add(new ChessKing(did));
-        //        piecesList.add(new ChessKing(did));
+        piecesList.add(new ChessKing(did));
         // remember used positions pear the piece, then removing will not be needed
         for (int x = 0; x < did.getN(); ++x) {
             for (int y = 0; y < did.getM(); ++y) {
@@ -86,24 +91,25 @@ public class MainCli {
                 // each variation makes N next level variations, and levels are three
                 ChessBoard chessBoard = new ChessBoard(did);
                 chessBoard.initialize(x, y);
-                boolean isValid = false;
-                for (ChessPiece piece : piecesList) {
-                    isValid = chessBoard.placePieceInPlaceWhereHasNotGotCollisions(piece);
-                    if (!isValid) {
-                        break;
+                for (List<ChessPiece> currentList : preparePiecesLists(piecesList)) {
+                    boolean isValid = false;
+                    for (ChessPiece piece : currentList) {
+                        isValid = chessBoard.placePieceInPlaceWhereHasNotGotCollisions(piece);
+                        if (!isValid) {
+                            break;
+                        }
                     }
-                }
-                if (isValid) {
-                    System.out.println(">>>> " + isValid);
-                    dod.print(chessBoard, piecesList);
-                    System.out.println("<<<< " + isValid);
-                }
-                if (isValid) {
                     // TODO add if not exists
-                    boards.add(chessBoard);
+                    if (isValid) {
+                        System.out.println(">>>> " + isValid);
+                        dod.print(chessBoard, piecesList);
+                        System.out.println("<<<< " + isValid);
+                        boards.add(chessBoard);
+                    }
                 }
             }
         }
+        // TODO to display this correctly name of the allocated piece must be remembered
         //        System.out.println("--------------Valid boards-(" + boards.size() + ")------------------");
         //        for (ChessBoard chessBoard : boards) {
         //            // TODO this works only if each board has own piecesList, maybe simple write those names in the board?
@@ -148,6 +154,11 @@ public class MainCli {
         return true;
     }
      */
+    
+    private List<List<ChessPiece>> preparePiecesLists(List<ChessPiece> piecesList) {
+        // TODO should make all order probabilities
+        return Collections.singletonList(piecesList);
+    }
     
     protected static ConfigurableApplicationContext loadContext(final String contextPath) {
         final GenericApplicationContext ctx = new GenericApplicationContext();
