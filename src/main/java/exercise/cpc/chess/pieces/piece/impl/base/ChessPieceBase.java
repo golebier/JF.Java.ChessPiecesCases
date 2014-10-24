@@ -52,7 +52,6 @@ public class ChessPieceBase implements ChessPiece {
             piecesPositions.add(myFreeposition);
             return true;
         }
-        // this mean we could not find free position to set this piece, then this variation is wrong
         return false;
     }
     

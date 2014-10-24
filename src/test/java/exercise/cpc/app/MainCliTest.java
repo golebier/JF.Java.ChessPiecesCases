@@ -28,3 +28,5 @@ public class MainCliTest {
         MainCli.main(null);
     }
 }
+
+// TODO for fun: make it base for Ajs with Rest java server visualization/simulation system

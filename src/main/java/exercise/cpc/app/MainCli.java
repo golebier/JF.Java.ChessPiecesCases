@@ -64,6 +64,7 @@ public class MainCli {
         // TODO should be sorted from most invassive to the less
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
         // FIXME 2K & R, should have 4Boards
+        // FIXME B & R, should have 8Boards
         piecesList.add(new ChessBishop(did));
         piecesList.add(new ChessRook(did));
         //        piecesList.add(new ChessKing(did));

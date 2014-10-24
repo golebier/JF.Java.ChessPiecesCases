@@ -39,7 +39,7 @@ public class ChessBishop extends ChessPieceBase implements ChessPiece {
     }
     
     // TODO name is deprecated, change it
-    protected void placePieceOnBoard(Position myFreeposition, List<Position> freePositions) {
+    public void placePieceOnBoard(Position myFreeposition, List<Position> freePositions) {
         freePositions.remove(myFreeposition);
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();
@@ -56,7 +56,6 @@ public class ChessBishop extends ChessPieceBase implements ChessPiece {
             freePositions.remove(tmp);
             freePositions.remove(tmp);
         }
-        
         for (int xx = x, yy = y + 1; xx < did.getN() && yy > 0;) {
             tmp.setX(xx++);
             tmp.setY(--yy);
@@ -71,7 +70,7 @@ public class ChessBishop extends ChessPieceBase implements ChessPiece {
         }
     }
     
-    protected boolean hasGotCollision(Position myFreeposition, List<Position> piecesPositions) {
+    public boolean hasGotCollision(Position myFreeposition, List<Position> piecesPositions) {
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();
         Position tmp = new Position(x, y);
@@ -91,7 +90,6 @@ public class ChessBishop extends ChessPieceBase implements ChessPiece {
                 return true;
             }
         }
-        
         for (int xx = x, yy = y + 1; xx < did.getN() && yy > 0;) {
             tmp.setX(xx++);
             tmp.setY(--yy);

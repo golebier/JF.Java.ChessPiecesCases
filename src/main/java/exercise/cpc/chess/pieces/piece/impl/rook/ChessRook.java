@@ -39,7 +39,7 @@ public class ChessRook extends ChessPieceBase implements ChessPiece {
     }
     
     // TODO name is deprecated, change it
-    protected void placePieceOnBoard(Position myFreeposition, List<Position> freePositions) {
+    public void placePieceOnBoard(Position myFreeposition, List<Position> freePositions) {
         freePositions.remove(myFreeposition);
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();
@@ -55,7 +55,7 @@ public class ChessRook extends ChessPieceBase implements ChessPiece {
         }
     }
     
-    protected boolean hasGotCollision(Position myFreeposition, List<Position> piecesPositions) {
+    public boolean hasGotCollision(Position myFreeposition, List<Position> piecesPositions) {
         int x = myFreeposition.getX();
         int y = myFreeposition.getY();
         Position tmp = new Position(x, y);
