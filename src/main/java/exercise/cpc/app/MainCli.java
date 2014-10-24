@@ -20,7 +20,6 @@ import org.springframework.core.io.ClassPathResource;
 import exercise.cpc.chess.board.ChessBoard;
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.bishop.ChessBishop;
-import exercise.cpc.chess.pieces.piece.impl.rook.ChessRook;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.output.display.DataOutputDisplay;
 
@@ -56,7 +55,7 @@ public class MainCli {
         //        DataInputReaderSimple dataInputReaderSimple = new DataInputReaderSimple(new DataInputReaderDimensions(),
         //                new DataInputReaderPieces());
         //        DataInput di = dataInputReaderSimple.read(args);
-        DataInputDimensions did = new DataInputDimensions(3, 3);
+        DataInputDimensions did = new DataInputDimensions(7, 7);
         
         // TODO change this, olny for debug now
         DataOutputDisplay dod = new DataOutputDisplay();
@@ -65,14 +64,25 @@ public class MainCli {
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
         // FIXME 2K & R, should have 4Boards
         // FIXME B & R, should have 8Boards
+        //        piecesList.add(new ChessQueen(did));
+        //        piecesList.add(new ChessQueen(did));
         piecesList.add(new ChessBishop(did));
-        piecesList.add(new ChessRook(did));
-        //        piecesList.add(new ChessKing(did));
+        piecesList.add(new ChessBishop(did));
+        //        //        piecesList.add(new ChessRook(did));
+        //        //        piecesList.add(new ChessKnight(did));
         //        piecesList.add(new ChessKing(did));
         //        piecesList.add(new ChessKing(did));
         // remember used positions pear the piece, then removing will not be needed
         for (int x = 0; x < did.getN(); ++x) {
             for (int y = 0; y < did.getM(); ++y) {
+                // TODO not all positions are found, this must be done like this
+                // for all initial positions, must be found all variations of free positions
+                // not just first free
+                // in pool are: initial positions, freepositions, pieces,
+                // all of those must have each variation;
+                // add threads, for each initial position run new variation for pieces and free
+                // those should be done on threads too
+                // what with repetitions?
                 ChessBoard chessBoard = new ChessBoard(did);
                 chessBoard.initialize(x, y);
                 boolean isValid = false;

@@ -58,16 +58,6 @@ public class ChessQueen extends ChessPieceBase implements ChessPiece {
         return false;
     }
     
-    //    @Override
-    //    public boolean checkCollisions(List<Position> freePositions, List<Position> piecesPositions) {
-    //        if (rook.checkCollisions(freePositions, piecesPositions)
-    //                && bishop.checkCollisions(freePositions, piecesPositions)) {
-    //            xy = new Position(bishop.getX(), bishop.getY());
-    //            return true;
-    //        }
-    //        return false;
-    //    }
-    
     @Override
     public String getName() {
         // TODO Auto-generated method stub
