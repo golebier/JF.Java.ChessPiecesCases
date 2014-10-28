@@ -58,18 +58,7 @@ public class ChessBoard {
      *   true if could.
      */
     public boolean placePieceInPlaceWhereHasNotGotCollisions(ChessPiece piece) {
-        // TODO review this, in present implementation has no sense
-        //        if (!isValid(piece.getX(), piece.getY())) {
-        //            return false;
-        //        }
         return piece.checkCollisions(freePositions, piecesPositions);
-    }
-    
-    private boolean isValid(int x, int y) {
-        if (x < 0 || x > dimensions.getN() || y < 0 || y > dimensions.getM()) {
-            return false;
-        }
-        return true;
     }
     
     public Integer getN() {
@@ -94,5 +83,32 @@ public class ChessBoard {
     
     public void setPiecesPositions(List<Position> piecesPositions) {
         this.piecesPositions = piecesPositions;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (object instanceof ChessBoard) {
+            ChessBoard chessBoard = (ChessBoard) object;
+            int counter = 0;
+            for (int x = 0; x < dimensions.getN(); ++x) {
+                for (int y = 0; y < dimensions.getM(); ++y) {
+                    final Position position = new Position(x, y);
+                    int indexOfPiece = chessBoard.getPiecesPositions().indexOf(position);
+                    if (-1 == indexOfPiece) {
+                        continue;
+                    }
+                    if (piecesPositions.contains(chessBoard.getPiecesPositions().get(indexOfPiece))) {
+                        counter++;
+                    }
+                }
+            }
+            if (counter == piecesPositions.size()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

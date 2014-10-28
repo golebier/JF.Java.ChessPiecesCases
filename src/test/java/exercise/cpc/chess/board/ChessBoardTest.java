@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 
 import exercise.cpc.chess.pieces.piece.ChessPiece;
 import exercise.cpc.chess.pieces.piece.impl.knight.ChessKnight;
+import exercise.cpc.chess.pieces.piece.impl.rook.ChessRook;
 import exercise.cpc.data.input.impl.dimensions.DataInputDimensions;
 import exercise.cpc.data.output.display.DataOutputDisplay;
 
@@ -30,9 +31,9 @@ import exercise.cpc.data.output.display.DataOutputDisplay;
 public class ChessBoardTest {
     @Test
     public void simpleNotRealTestJustDisplaywhatHappendWwhenTwoKingsArePlaced() {
-        DataInputDimensions did = new DataInputDimensions(6, 6);
+        DataInputDimensions did = new DataInputDimensions(4, 4);
         ChessBoard chessBoard = new ChessBoard(did);
-        chessBoard.initialize(3, 3);
+        chessBoard.initialize(0, 0);
         
         DataOutputDisplay dod = new DataOutputDisplay();
         List<ChessPiece> piecesList = new ArrayList<ChessPiece>();
@@ -42,13 +43,18 @@ public class ChessBoardTest {
         //        piecesList.add(new ChessRook(did));
         //        piecesList.add(new ChessBishop(did));
         //        piecesList.add(new ChessQueen(did));
+        piecesList.add(new ChessRook(did));
+        piecesList.add(new ChessRook(did));
         piecesList.add(new ChessKnight(did));
-        dod.print(chessBoard, piecesList);
+        piecesList.add(new ChessKnight(did));
+        piecesList.add(new ChessKnight(did));
+        piecesList.add(new ChessKnight(did));
+        dod.print(chessBoard);
         System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         
         for (ChessPiece piece : piecesList) {
             System.out.println(chessBoard.placePieceInPlaceWhereHasNotGotCollisions(piece));
-            dod.print(chessBoard, piecesList);
+            dod.print(chessBoard);
             System.out.println(chessBoard.getFreePositions().size() + ", " + chessBoard.getPiecesPositions().size());
         }
     }

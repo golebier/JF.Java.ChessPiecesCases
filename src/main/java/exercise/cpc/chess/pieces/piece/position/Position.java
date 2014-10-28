@@ -1,7 +1,5 @@
 package exercise.cpc.chess.pieces.piece.position;
 
-import exercise.cpc.chess.pieces.piece.ChessPiece;
-
 //
 //Copyright (c) 1979, the Gra projects.
 //Please see the AUTHORS file for details.
@@ -22,26 +20,19 @@ import exercise.cpc.chess.pieces.piece.ChessPiece;
 public class Position {
     private int x;
     private int y;
+    private String signe = "#";
     
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
     
+    public Position(String string) {
+        signe = string;
+    }
+    
     @Override
     public boolean equals(Object object) {
-        // TODO make position interface and then ChessPiece and present Position implement it
-        // and then only one instanceof and one if, implementations no need to be change
-        if (object instanceof ChessPiece) {
-            ChessPiece tested = (ChessPiece) object;
-            if (tested.getX() != x) {
-                return false;
-            }
-            if (tested.getY() != y) {
-                return false;
-            }
-            return true;
-        }
         if (object instanceof Position) {
             Position tested = (Position) object;
             if (tested.getX() != x) {
@@ -50,7 +41,10 @@ public class Position {
             if (tested.getY() != y) {
                 return false;
             }
-            return true;
+            if ("#".equals(getSigne())) {
+                return true;
+            }
+            return getSigne().equals(tested.getSigne());
         }
         return false;
     }
@@ -59,15 +53,23 @@ public class Position {
         return x;
     }
     
-    public void setX(int x) {
-        this.x = x;
+    public String getSigne() {
+        return signe;
     }
     
     public int getY() {
         return y;
     }
     
+    public void setX(int x) {
+        this.x = x;
+    }
+    
     public void setY(int y) {
         this.y = y;
+    }
+    
+    public void setSigne(String signe) {
+        this.signe = signe;
     }
 }

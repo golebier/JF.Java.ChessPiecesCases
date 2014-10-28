@@ -39,6 +39,7 @@ public class ChessPieceBase implements ChessPiece {
     
     public ChessPieceBase(DataInputDimensions did) {
         this.did = did;
+        xy = new Position("p");
     }
     
     @Override
@@ -49,6 +50,7 @@ public class ChessPieceBase implements ChessPiece {
             }
             placePieceOnBoard(myFreeposition, freePositions);
             xy = myFreeposition;
+            xy.setSigne(getName());
             piecesPositions.add(myFreeposition);
             return true;
         }
@@ -74,7 +76,26 @@ public class ChessPieceBase implements ChessPiece {
     
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        return "p";
+        return xy.getSigne();
+    }
+    
+    @Override
+    public int compareTo(ChessPiece piece) {
+        return getName().compareTo(piece.getName());
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof ChessPiece) {
+            ChessPiece tested = (ChessPiece) object;
+            if (tested.getX() != xy.getX()) {
+                return false;
+            }
+            if (tested.getY() != xy.getY()) {
+                return false;
+            }
+            return getName().equals(tested.getName());
+        }
+        return false;
     }
 }
